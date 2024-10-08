@@ -6,7 +6,8 @@ const LoadingJsonArray = () => {
   const [users, setUsers] = useState([]);
   // search input value ==============================
   const [searchValue, setSearchValue] = useState("");
-
+  // filter search ======================================
+  const [filterSearchValue, setFilterSearchValue]=useState([])
   
 
   // data fetch ===========================================
@@ -18,6 +19,7 @@ const LoadingJsonArray = () => {
       const data = await fetchData.json();
       setUsers(data);
       console.log(data);
+      setFilterSearchValue(data)
     };
     fetchUsersData();
   }, []);
@@ -26,7 +28,10 @@ const LoadingJsonArray = () => {
     const searchTerm = e?.target?.value;
     setSearchValue(searchTerm);
 
-    
+    const filterSearchTerm = users.filter((user) => 
+      user?.name.toLowerCase()?.includes(searchTerm?.toLowerCase())
+    ); 
+    setFilterSearchValue(filterSearchTerm);
   }
 
   return (
@@ -41,7 +46,7 @@ const LoadingJsonArray = () => {
         />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5">
-        {users.map((user) => (
+        {filterSearchValue.map((user) => (
           <div key={user.id}>
             <div className="border shadow-lg rounded-lg  p-3">
               <p>
