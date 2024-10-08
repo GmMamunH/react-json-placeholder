@@ -16,11 +16,24 @@ const LoadingJsonArray = () => {
   }, []);
 
   return (
-    <div>
-      <div>
+    <div className="max-w-screen-lg mx-auto p-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5">
         {users.map((user) => (
           <div key={user.id}>
-            {user.name}
+            <div className="border shadow-lg rounded-lg  p-3">
+              <p>
+                <strong>Name: </strong> {user.name}
+              </p>
+              <p>
+                <strong>Username: </strong> {user?.username}
+              </p>
+              <p>
+                <strong>Email: </strong> {user?.email}
+              </p>
+              <p>
+                <strong>Phone: </strong> {user?.phone}
+              </p>
+            </div>
           </div>
         ))}
       </div>
