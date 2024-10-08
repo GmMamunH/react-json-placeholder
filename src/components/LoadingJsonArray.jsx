@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 
 const LoadingJsonArray = () => {
+  // data fetch ===========================================
   const [users, setUsers] = useState([]);
   useEffect(() => {
     const fetchUsersData = async () => {
@@ -14,9 +15,18 @@ const LoadingJsonArray = () => {
     };
     fetchUsersData();
   }, []);
+  // ============================================
 
   return (
     <div className="max-w-screen-lg mx-auto p-5">
+      <div className="p-5 rounded-lg border bg-gray-500">
+        <input
+          className="p-2 border rounded-lg"
+          type="text"
+          placeholder="Search by name..."
+         
+        />
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5">
         {users.map((user) => (
           <div key={user.id}>
