@@ -66,7 +66,7 @@ const LoadingJsonArray = () => {
             </div>
           ))
         ) : (
-          <h1 className="text-2xl font-bold text-center text-red-700">Data loading.....</h1>
+          <h1 className="text-2xl font-bold text-center text-red-700">Data not found</h1>
         )}
       </div>
     </div>
