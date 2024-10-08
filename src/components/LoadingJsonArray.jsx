@@ -2,8 +2,14 @@
 import React, { useEffect, useState } from "react";
 
 const LoadingJsonArray = () => {
-  // data fetch ===========================================
+  // data show state ==============================
   const [users, setUsers] = useState([]);
+  // search input value ==============================
+  const [searchValue, setSearchValue] = useState("");
+
+  
+
+  // data fetch ===========================================
   useEffect(() => {
     const fetchUsersData = async () => {
       const fetchData = await fetch(
@@ -15,7 +21,13 @@ const LoadingJsonArray = () => {
     };
     fetchUsersData();
   }, []);
-  // ============================================
+  // search value handler ============================================
+  const searchValueHandler=(e)=>{
+    const searchTerm = e?.target?.value;
+    setSearchValue(searchTerm);
+
+    
+  }
 
   return (
     <div className="max-w-screen-lg mx-auto p-5">
@@ -24,7 +36,8 @@ const LoadingJsonArray = () => {
           className="p-2 border rounded-lg"
           type="text"
           placeholder="Search by name..."
-         
+          value={searchValue}
+          onChange={searchValueHandler}
         />
       </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5">
