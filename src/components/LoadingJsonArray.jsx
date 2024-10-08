@@ -15,7 +15,17 @@ const LoadingJsonArray = () => {
     fetchUsersData();
   }, []);
 
-  return <div>LoadingJsonArray</div>;
+  return (
+    <div>
+      <div>
+        {users.map((user) => (
+          <div key={user.id}>
+            {user.name}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default LoadingJsonArray;
