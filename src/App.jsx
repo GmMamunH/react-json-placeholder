@@ -1,6 +1,8 @@
 // import { useEffect, useState } from "react"
 
-import SearchUserEffect from "./components/SearchUserEffect";
+import LoadingJsonArray from "./components/LoadingJsonArray";
+
+// import SearchUserEffect from "./components/SearchUserEffect";
 
 // import SimpleUseEffect from "./components/SimpleUseEffect";
 
@@ -12,7 +14,8 @@ function App() {
     <>
     <div  > 
       {/* <SimpleUseEffect/> */}
-      <SearchUserEffect/>
+      {/* <SearchUserEffect/> */}
+      <LoadingJsonArray/>
 
     </div>
     </>

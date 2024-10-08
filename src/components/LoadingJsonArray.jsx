@@ -1,11 +1,21 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useEffect, useState } from "react";
 
 const LoadingJsonArray = () => {
-  
-  return (
-    <div>LoadingJsonArray</div>
-  )
-}
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    const fetchUsersData = async () => {
+      const fetchData = await fetch(
+        "https://jsonplaceholder.typicode.com/users"
+      );
+      const data = await fetchData.json();
+      setUsers(data);
+      console.log(data);
+    };
+    fetchUsersData();
+  }, []);
 
-export default LoadingJsonArray
+  return <div>LoadingJsonArray</div>;
+};
+
+export default LoadingJsonArray;
