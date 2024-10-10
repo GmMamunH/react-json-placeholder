@@ -1,6 +1,10 @@
+/* eslint-disable no-unused-vars */
 // import { useEffect, useState } from "react"
 
-import LoadingJsonArray from "./components/LoadingJsonArray";
+import Axios from "./components/axios/Axios";
+
+
+// import LoadingJsonArray from "./components/LoadingJsonArray";
 
 // import SearchUserEffect from "./components/SearchUserEffect";
 
@@ -15,7 +19,9 @@ function App() {
     <div  > 
       {/* <SimpleUseEffect/> */}
       {/* <SearchUserEffect/> */}
-      <LoadingJsonArray/>
+      {/* <LoadingJsonArray/> */}
+      <Axios/>
+      
 
     </div>
     </>
