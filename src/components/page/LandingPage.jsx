@@ -1,16 +1,14 @@
 /* eslint-disable no-unused-vars */
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const LandingPage = () => {
-    const [users, setUsers]=useState([])
-    useEffect(()=>{
-        axios.get("https://jsonplaceholder.typicode.com/users").then((data)=>{
-            console.log(data);
-          
-
-        });
-    },[])
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((data) => {
+      setUsers(data?.data);
+    });
+  }, []);
   return (
     <>
       <header className=" bg-white shadow-lg">
@@ -40,14 +38,49 @@ const LandingPage = () => {
               </li>
             </ul>
           </section>
-          <section className='flex gap-3'>
-            <input className='py-2 px-4 border border-slate-300 rounded-md text-base font-normal text-slate-400 ' type="text" placeholder="name or username" />
-            <button className='bg-black text-white rounded-md px-4 font-medium text-sm' >Search</button>
+          <section className="flex gap-3">
+            <input
+              className="py-2 px-4 border border-slate-300 rounded-md text-base font-normal text-slate-400 "
+              type="text"
+              placeholder="name or username"
+            />
+            <button className="bg-black text-white rounded-md px-4 font-medium text-sm">
+              Search
+            </button>
           </section>
         </nav>
       </header>
+      {/* ==================================================== */}
+
+      <section>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5 p-5">
+          {users.map((user) => (
+            <div key={user?.id}>
+              <div className="border shadow-lg rounded-lg  p-3">
+                <p>
+                  <strong>Name: </strong> {user?.name}
+                </p>
+                <p>
+                  <strong>Phone: </strong> {user?.phone}
+                </p>
+                <p>
+                  <strong>Address: </strong> {user?.address?.street},{" "}
+                  {user?.address?.suite}, {user?.address?.city}
+                </p>
+                
+                <p>
+                  <strong>Website: </strong> {user?.website}
+                </p>
+                <p>
+                  <strong>Company: </strong> {user?.company?.name}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </>
   );
-}
+};
 
-export default LandingPage
+export default LandingPage;
