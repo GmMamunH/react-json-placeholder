@@ -13,15 +13,26 @@ const Axios = () => {
   }, []);
 
   return (
-    <div> <h1>Data Load using Axios</h1>
-      Users
-      {post.map((item, i) => {
-        return (
-          <div key={i}>
-            <p>{item?.name}</p>
+    <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5 p-5">
+      
+      {post.map((item) => (
+        <div key={item.id}>
+          <div className="border shadow-lg rounded-lg  p-3">
+            <p>
+              <strong>Name: </strong> {item.name}
+            </p>
+            <p>
+              <strong>Username: </strong> {item?.username}
+            </p>
+            <p>
+              <strong>Email: </strong> {item?.email}
+            </p>
+            <p>
+              <strong>Phone: </strong> {item?.phone}
+            </p>
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 };
