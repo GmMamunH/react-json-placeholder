@@ -9,6 +9,8 @@ const LoadingJsonArray = () => {
   // filter search ======================================
   const [filterSearchValue, setFilterSearchValue] = useState([]);
 
+  const [loading, setLoading] = useState(true);
+
   // data fetch ===========================================
   useEffect(() => {
     const fetchUsersData = async () => {
@@ -18,6 +20,7 @@ const LoadingJsonArray = () => {
       const data = await fetchData.json();
       setUsers(data);
       setFilterSearchValue(data);
+      setLoading(false);
     };
     fetchUsersData();
   }, []);
@@ -46,7 +49,12 @@ const LoadingJsonArray = () => {
       </div>
       {/* data show ============================== */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-5 mt-5">
-        {filterSearchValue?.length > 0 ? (
+        {/* if the data is loading, show a proper message */}
+        {loading ? (
+          <h1 className="text-2xl font-bold text-center text-red-700">
+            Wait, data loading...
+          </h1>
+        ) : filterSearchValue?.length > 0 ? (
           filterSearchValue.map((user) => (
             <div key={user.id}>
               <div className="border shadow-lg rounded-lg  p-3">
@@ -66,7 +74,9 @@ const LoadingJsonArray = () => {
             </div>
           ))
         ) : (
-          <h1 className="text-2xl font-bold text-center text-red-700">Data not found</h1>
+          <h1 className="text-2xl font-bold text-center text-red-700">
+            Data not found
+          </h1>
         )}
       </div>
     </div>
