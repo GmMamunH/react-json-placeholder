@@ -1,9 +1,11 @@
  
 // import { useEffect, useState } from "react"
 
-// import AddUser from "./components/axios/AddUser";
+import LandingPage from "./components/page/LandingPage";
 
-import Axios from "./components/axios/Axios";
+
+
+// import Axios from "./components/axios/Axios";
 
 // import LoadingJsonArray from "./components/LoadingJsonArray";
 
@@ -21,8 +23,9 @@ function App() {
       {/* <SimpleUseEffect/> */}
       {/* <SearchUserEffect/> */}
       {/* <LoadingJsonArray/> */}
-      <Axios/>
-      {/* <AddUser/> */}
+      {/* <Axios/> */}
+      <LandingPage/>
+      
       
 
     </div>
